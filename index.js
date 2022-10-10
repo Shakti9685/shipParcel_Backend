@@ -3,13 +3,15 @@ const app = express();
 const http = require("http").Server(app);
 const mongoose = require("mongoose");
 const chalk = require("chalk");
+const redis = require('redis');
+const client = redis.createClient();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const Agenda = require("agenda");
 const updateDueDate = require("./services/updateDueDate");
 const bodyParser = require("body-parser");
-app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.json({ limit: "50mb" }));        //740561073
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 
@@ -17,6 +19,15 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 const routes = require("./routes");
 // require("./services/passport");
 
+//!Redis connection
+const redisClient = redis.createClient(
+  16368,
+  "redis-16368.c15.us-east-1-2.ec2.cloud.redislabs.com",
+);
+
+redisClient.on("connect", async function () {
+  console.log("Connected to Redis..");
+});
 
 const { database } = require("./config/keys");
 
