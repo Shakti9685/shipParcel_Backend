@@ -28,7 +28,7 @@ const registerUser = async (req, res, next) => {
       );
 
       console.log(req.body)
-    //const result = await registerValidation.validateAsync(req.body);
+    const result = await registerValidation.validateAsync(req.body);
 
     // eslint-disable-next-line no-unused-vars
     const {email, password,confirmPassword, userName ,accountType,postalCode,address,businessName,contactName,phone,country,province,city,referral,newsUpdates,apt,termsAndCondition} = req.body;

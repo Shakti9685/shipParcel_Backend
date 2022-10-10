@@ -7,14 +7,18 @@ const registerValidation = Joi.object({
   confirmPassword: Joi.string().allow("").min(3).max(50).required(),
   accountType:Joi.string().valid("Personal", "Business").required(),
   address: Joi.object({
+    country:Joi.string().required(),
     province: Joi.string().required(),
     city: Joi.string().required(),
     address: Joi.string().required(),
     postalCode: Joi.string(),
+    apt:Joi.boolean(),
   }),
   businessName: Joi.string().required(),
   contactName: Joi.string().required(),
-  phoneNumber: Joi.string().required(),
+  phone: Joi.string().required(),
+  termsAndConditions:Joi.boolean(),
+  newsUpdates:Joi.boolean(),
 });
 
 const createContactValidation=Joi.object({

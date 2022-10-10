@@ -1,4 +1,6 @@
 const createQuotes = require("../../controllers/quote/createQuote");
+const generateAccessToken = require("../../controllers/quote/generateAccessToken");
+const getQuote = require("../../controllers/quote/getQuote");
 const getHistory = require("../../controllers/historyAndTracking/getHistory");
 const deleteHistoryById = require("../../controllers/historyAndTracking/deleteHistoryById");
 const deleteHistory = require("../../controllers/historyAndTracking/deleteHistory");
@@ -16,6 +18,8 @@ const router = require("express").Router();
 router.post("/createQuote", createQuotes);
 
 router.post("/createShipMent",createShipMent)
+
+router.get("/shipment",generateAccessToken ,getQuote)
 
 //Contacts Api
 router.get("/contacts",getContacts);

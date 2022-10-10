@@ -16,6 +16,7 @@ const { accessTokenLife, refreshTokenLife } = require("../../config/keys").jwt;
 const loginUser = async (req, res, next) => {
   try {
     const result = await loginValidation.validateAsync(req.body);
+    console.log(result)
     const { email, password } = result;
 
       const userLogin = await User.findOne({ email });
