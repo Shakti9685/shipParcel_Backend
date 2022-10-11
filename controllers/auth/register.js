@@ -1,23 +1,10 @@
 const bcrypt = require("bcryptjs");
 const createError = require("http-errors");
 
-// import nodemailer function and verification template
-// const sendEmail = require("../../config/nodemailer");
-// const emailTemplate = require("../../config/emailTemplates/emailTemplate");
-
-// import models and helpers
 const User = require("../../models/User.model");
-// const Token = require("../../models/RefreshToken.model");
-// const {
-//   generateAccessToken,
-//   generateRefreshToken,
-//   generateCryptoKey,
-// } = require("../../services/generate_token");
+
 const { registerValidation } = require("../../services/validation_schema");
-// const { accessTokenLife, refreshTokenLife } = require("../../config/keys").jwt;
-// const sendEmail = require("../../services/sendEmail");
-// const verifyEmailTemplate = require("../../config/emailTemplates/verifyEmail");
-// const VerifyTokenModel = require("../../models/VerifyToken.model");
+
 
 const registerUser = async (req, res, next) => {
  try {
@@ -28,7 +15,7 @@ const registerUser = async (req, res, next) => {
       );
 
       console.log(req.body)
-    const result = await registerValidation.validateAsync(req.body);
+   const result = await registerValidation.validateAsync(req.body);
 
     // eslint-disable-next-line no-unused-vars
     const {email, password,confirmPassword, userName ,accountType,postalCode,address,businessName,contactName,phone,country,province,city,referral,newsUpdates,apt,termsAndCondition} = req.body;

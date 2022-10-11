@@ -8,11 +8,11 @@ const registerValidation = Joi.object({
   accountType:Joi.string().valid("Personal", "Business").required(),
   address: Joi.object({
     country:Joi.string().required(),
-    province: Joi.string().required(),
+    state: Joi.string().required(),
     city: Joi.string().required(),
     address: Joi.string().required(),
     postalCode: Joi.string(),
-    apt:Joi.boolean(),
+    apt:Joi.string(),
   }),
   businessName: Joi.string().required(),
   contactName: Joi.string().required(),
