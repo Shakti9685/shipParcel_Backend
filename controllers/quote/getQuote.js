@@ -5,7 +5,11 @@ var querystring = require('querystring');
 const getQuotes = async (req,res,next)=>{
 
     try{
-        console.log(req.headers.Authorization)
+        console.log(req.headers.Authorization);
+        req.body.accountNumber= {
+          "value": "740561073"
+      }
+      console.log(req.body)
         let response =await axios.post("https://apis-sandbox.fedex.com/rate/v1/rates/quotes",
         req.body, {
           headers: { 
@@ -22,6 +26,10 @@ const getQuotes = async (req,res,next)=>{
 
 }
 
+
+// "accountNumber": {
+//   "value": "740561073"
+// },
 
 
 module.exports=getQuotes

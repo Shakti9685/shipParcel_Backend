@@ -17,7 +17,7 @@ const loginUser = async (req, res, next) => {
   try {
     const result = await loginValidation.validateAsync(req.body);
     console.log(result)
-    const { email, password } = result;
+    const { email, password } = result;  
 
       const userLogin = await User.findOne({ email });
       if (!userLogin) throw createError.BadRequest("Email is not registered");
@@ -60,3 +60,4 @@ const loginUser = async (req, res, next) => {
 };
 
 module.exports = loginUser;
+
