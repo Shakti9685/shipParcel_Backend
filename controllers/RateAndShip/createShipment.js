@@ -23,10 +23,10 @@ const createShipMent = async (req, res, next) => {
   
      req.body.userId = decodedToken.toString();
       
-    const result = await createShipMentValidation.validateAsync(req.body);
+   // const result = await createShipMentValidation.validateAsync(req.body);
 
 
-     let data = await shipMentModal.create(result)
+     let data = await shipMentModal.create(req.body)
 
     if (!data)
       res.status(400).send({ status: false, message: "Your request could not be processed. Please contact support or try again after some time." });

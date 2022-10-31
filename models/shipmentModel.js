@@ -129,7 +129,8 @@ const shipmentSchema = new Schema({
         type: Boolean,
         required: false
     },
-    packageDetail: {
+    packageDetail: [
+        {
         packagingType: {
             type: String,
             enum: ["Pak", "Envelope", "My Packaging", "Pallet"]
@@ -177,7 +178,8 @@ const shipmentSchema = new Schema({
             trim: true,
             required: false
         }
-    },
+}
+],
     additionalServices: {
         schedulePickUp: {
             pickUpDate: {

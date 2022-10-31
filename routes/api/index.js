@@ -9,6 +9,7 @@ const categoryRoutes = require("./Category.route");
 const contactUsRoutes = require("./ContactUs.route");
 const ordersRoutes = require("./Orders.route");
 const reportsRoutes = require("./Report.route");
+const shippingLabel =require("./shippingLabel")
 
 const validateAccessToken = require("../../middlewares/jwtValidation");
 
@@ -17,6 +18,8 @@ router.use("/auth", authRoutes);
 router.use("/user", userRoutes);
 
 router.use("/quote", QuoteRoutes);
+
+router.use("/shippingLabel", shippingLabel)
 
 
 router.use(

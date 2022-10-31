@@ -2,15 +2,15 @@ const axios= require("axios")
 var querystring = require('querystring');
 
 
-const getQuotes = async (req,res,next)=>{
+const generateShippingLabel = async (req,res,next)=>{
 
     try{
-        console.log(req.headers.Authorization);
+        // console.log(req.headers.Authorization);
         req.body.accountNumber= {
           "value": "740561073"
       }
       //console.log(req.body)
-        let response =await axios.post("https://apis-sandbox.fedex.com/rate/v1/rates/quotes",
+        let response =await axios.post("https://apis-sandbox.fedex.com/ship/v1/shipments",
         req.body, {
           headers: { 
             "Content-Type": "application/json",
@@ -18,7 +18,6 @@ const getQuotes = async (req,res,next)=>{
           }
         }).then(function(response) {
          // console.log(response.data.output)
-          response.data.output.fedxUrlLink="shaktisaluja"
          res.status(200).send({ message: response.data})
         });
     }
@@ -29,9 +28,5 @@ const getQuotes = async (req,res,next)=>{
 }
 
 
-// "accountNumber": {
-//   "value": "740561073"
-// },
 
-
-module.exports=getQuotes
+module.exports=generateShippingLabel
