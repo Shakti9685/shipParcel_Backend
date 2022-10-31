@@ -5,6 +5,7 @@ var querystring = require('querystring');
 const getQuotes = async (req,res,next)=>{
 
     try{
+      console.log("hellloooooo")
         console.log(req.headers.Authorization);
         req.body.accountNumber= {
           "value": "740561073"
@@ -23,7 +24,7 @@ const getQuotes = async (req,res,next)=>{
         });
     }
     catch(err){
-        res.status(500).send(err.message)
+        res.status(500).send(err)
     }
 
 }

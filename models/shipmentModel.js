@@ -1,9 +1,9 @@
 const { Schema, model } = require("mongoose");
 
 const shipmentSchema = new Schema({
-    userId:{
+    userId: {
         type: Schema.Types.ObjectId,
-        required:true
+        required: true
     },
     shipping_from: {
         company: {
@@ -129,8 +129,8 @@ const shipmentSchema = new Schema({
         type: Boolean,
         required: false
     },
-    packageDetail: [
-        {
+    packageDetail:
+    {
         packagingType: {
             type: String,
             enum: ["Pak", "Envelope", "My Packaging", "Pallet"]
@@ -140,46 +140,64 @@ const shipmentSchema = new Schema({
             min: 1,
             max: 50
         },
-        dimension: {
-            length: {
-                type: Number,
-                required: false,
-                trim: true
-            },
-            breath: {
-                type: Number,
-                required: false,
-                trim: true
-            },
-            height: {
-                type: Number,
-                required: false,
-                trim: true
-            }
 
-        },
-        incured_value: {
-            type: String,
-            trim: true,
-            required: false
-        },
-        weight: {
-            type: String,
-            required: false,
-            trim: true
-        },
-        specialHandling: {
-            type: String,
-            trim: true,
-            required: false
-        },
-        description: {
-            type: String,
-            trim: true,
-            required: false
-        }
-}
-],
+        requestedPackageLineItems: [{
+            dimension: {
+                length: {
+                    type: Number,
+                    required: false,
+                    trim: true
+                },
+                breath: {
+                    type: Number,
+                    required: false,
+                    trim: true
+                },
+                height: {
+                    type: Number,
+                    required: false,
+                    trim: true
+                },
+                units: {
+                    type: Number,
+                    required: false,
+                    trim: true
+                }
+            },
+            insuranceValue: {
+                type: String,
+                trim: true,
+                required: false
+            },
+            weight: {
+                units: {
+                    type: String,
+                    trim: true,
+                    required: false
+                },
+                value: {
+                    type: String,
+                    trim: true,
+                    required: false
+                }
+            },
+            specialHandling: {
+                type: String,
+                trim: true,
+                required: false,
+                enum: ["Yes","No"]
+            },
+            description: {
+                type: String,
+                trim: true,
+                required: false
+            }
+        }]
+
+
+    }
+
+    ,
     additionalServices: {
         schedulePickUp: {
             pickUpDate: {
@@ -209,18 +227,18 @@ const shipmentSchema = new Schema({
             }
         }
     },
-    DropOffAtCarrier:{
-        shipDate:{
+    DropOffAtCarrier: {
+        shipDate: {
             type: String,
             trim: true,
             required: false
         }
     },
-status:{
-    type:String,
-    default:"Ready to Process"
-}
-}, {timestamps: true})
+    status: {
+        type: String,
+        default: "Ready to Process"
+    }
+}, { timestamps: true })
 
 const shipMent = model("shipMent", shipmentSchema, "shipMent");
 
