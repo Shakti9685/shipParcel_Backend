@@ -5,7 +5,7 @@ const router = require("express").Router();
 
 
 
-router.get("",generateAccessToken ,generateShippingLabel)
+router.post("",generateAccessToken ,generateShippingLabel)
 
 
 module.exports = router;

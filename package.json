@@ -36,6 +36,7 @@
     "nodemailer": "^6.5.0",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
+    "postal-codes-js": "^2.5.2",
     "querystring": "^0.2.1",
     "redis": "^4.3.1",
     "socket.io": "^4.2.0",

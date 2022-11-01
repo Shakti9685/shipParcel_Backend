@@ -23,7 +23,7 @@ const createShipMent = async (req, res, next) => {
   
      req.body.userId = decodedToken.toString();
       
-   // const result = await createShipMentValidation.validateAsync(req.body);
+    //const result = await createShipMentValidation.validateAsync(req.body);
     // console.log(req.body)
 
      let data = await shipMentModal.create(req.body)
@@ -40,7 +40,7 @@ const createShipMent = async (req, res, next) => {
 
   }
   catch (error) {
-    next(error);
+    next(error.message);
   }
 }
 

@@ -104,20 +104,23 @@ const createShipMentValidation = Joi.object({
     instruction: Joi.string().required(),
     saveToAddressBook: Joi.boolean().required(),
   }),
-  sendConfirmationMail: Joi.boolean().required(),
+  sendConfirmationMail: Joi.boolean(),
   packageDetail: Joi.object({
     packagingType:Joi.string().valid("Pak", "Envelope", "My Packaging", "Pallet").required(),
     quantity: Joi.number().min(1).max(50),
-    dimension: Joi.object({
-      length:Joi.number().required(),
-      breath:Joi.number().required(),
-      height:Joi.number().required(),
+    //!
+    requestedPackageLineItems:Joi.object({
+      dimension: Joi.object({
+        length:Joi.number().required(),
+        breath:Joi.number().required(),
+        height:Joi.number().required(),
+      }),
+      weight: Joi.string(),
+      specialHandling:Joi.string(),
+      description:Joi.string(),
     }),
-    weight: Joi.string(),
-    specialHandling:Joi.string(),
-    description:Joi.string(),
   }),
-  incured_value:Joi.string(),
+  insuranceValue:Joi.string(),
   additionalServices:  Joi.object({
     schedulePickUp:Joi.object({
       pickUpDate:Joi.string(),
